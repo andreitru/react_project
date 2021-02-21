@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './menu.less';
-import {DropList} from "./DropList";
 import {Dropdown} from "../../../Dropdown";
+import {EIcons, Icon} from "../../../Icons";
+import {MenuItemsList} from "./MenuItemsList";
+import {EColor, Text} from "../../../Text";
 
 export function Menu() {
   return (
@@ -12,13 +14,17 @@ export function Menu() {
           onOpen={() => console.log('opened')}
           button={
             <button className={styles.menuButton}>
-              <svg width="5" height="20" viewBox="0 0 5 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9"/>
-                <circle cx="2.5" cy="10" r="2.5" fill="#D9D9D9"/>
-                <circle cx="2.5" cy="17.5" r="2.5" fill="#D9D9D9"/>
-              </svg>
+              {/*<MenuIcon/>*/}
+              <Icon name={EIcons.menu} />
             </button>}>
-          <DropList/>
+          <div className={styles.dropdown}>
+            <MenuItemsList postId='1234'/>
+            <button className={styles.closeButton}>
+              <Text mobileSize={12} size={14} color={EColor.gray66}>
+                Закрыть
+              </Text>
+            </button>
+          </div>
         </Dropdown>
       </div>
 

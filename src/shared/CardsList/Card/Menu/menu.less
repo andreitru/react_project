@@ -2,6 +2,7 @@
   position: absolute;
   top: 17px;
   right: 15px;
+  padding: 0;
 }
 
 .menuButton {
@@ -18,6 +19,22 @@
 
 .menuButton:active, .menuButton:hover {
   background-color: rgba(51, 51, 51, 0.1);
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  background-color: var(--white);
+}
+
+.closeButton {
+  background-color: var(--grayD9);
+  padding: 12px 23px;
+  border-radius: 0 0 3px 3px;
+  width: 100%;
 }
 
 .controls {
@@ -108,6 +125,11 @@ svg.down {
   .actions {
     display: none;
   }
+
+  .dropdown {
+    right: -60px;
+    top: 20px;
+  }
 }
 
 @media all and (min-width: 1540px) {
@@ -125,5 +147,9 @@ svg.down {
 
   .controls {
     position: relative;
+  }
+
+  .closeButton {
+    display: none;
   }
 }

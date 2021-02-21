@@ -117,7 +117,7 @@ eval("// Exports\nmodule.exports = {};\n\n\n//# sourceURL=webpack:///./src/main.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.indexTemplate = void 0;\nexports.indexTemplate = function (content) { return \"\\n<!DOCTYPE html>\\n<html lang=\\\"en\\\">\\n<head>\\n  <meta charset=\\\"UTF-8\\\">\\n  <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\">\\n  <title>Reddit for me</title>\\n  <script src=\\\"/static/client.js\\\" type=\\\"application/javascript\\\"></script>\\n</head>\\n<body>\\n  <div id=\\\"react_root\\\">\" + content + \"</div>\\n</body>\\n</html>\\n\"; };\n\n\n//# sourceURL=webpack:///./src/server/indexTemplate.js?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.indexTemplate = void 0;\nvar indexTemplate = function (content) { return \"\\n<!DOCTYPE html>\\n<html lang=\\\"en\\\">\\n<head>\\n  <meta charset=\\\"UTF-8\\\">\\n  <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\">\\n  <title>Reddit for me</title>\\n  <script src=\\\"/static/client.js\\\" type=\\\"application/javascript\\\"></script>\\n</head>\\n<body>\\n  <div id=\\\"react_root\\\">\" + content + \"</div>\\n</body>\\n</html>\\n\"; };\nexports.indexTemplate = indexTemplate;\n\n\n//# sourceURL=webpack:///./src/server/indexTemplate.js?");
 
 /***/ }),
 
@@ -145,41 +145,6 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 
 /***/ }),
 
-/***/ "./src/shared/CardsList/Card/Menu/DropList/DropList.tsx":
-/*!**************************************************************!*\
-  !*** ./src/shared/CardsList/Card/Menu/DropList/DropList.tsx ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.DropList = void 0;\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nvar droplist_less_1 = __importDefault(__webpack_require__(/*! ./droplist.less */ \"./src/shared/CardsList/Card/Menu/DropList/droplist.less\"));\nvar generateRandomIndex_1 = __webpack_require__(/*! ../../../../../utils/react/generateRandomIndex */ \"./src/utils/react/generateRandomIndex.ts\");\nvar GenericList_1 = __webpack_require__(/*! ../../../../GenericList/GenericList */ \"./src/shared/GenericList/GenericList.tsx\");\nvar merge_1 = __webpack_require__(/*! ../../../../../utils/js/merge */ \"./src/utils/js/merge.ts\");\nvar ICONS = {\n    comments: react_1.default.createElement(\"svg\", { width: \"15\", height: \"15\", viewBox: \"0 0 15 15\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n        react_1.default.createElement(\"path\", { d: \"M12.75 0.416626H1.41667C0.6375 0.416626 0 1.05413 0 1.83329V10.3333C0 11.1125 0.6375 11.75 1.41667 11.75H11.3333L14.1667 14.5833V1.83329C14.1667 1.05413 13.5292 0.416626 12.75 0.416626ZM11.3333 8.91663H2.83333V7.49996H11.3333V8.91663ZM11.3333 6.79163H2.83333V5.37496H11.3333V6.79163ZM11.3333 4.66663H2.83333V3.24996H11.3333V4.66663Z\" })),\n    share: react_1.default.createElement(\"svg\", { width: \"12\", height: \"14\", viewBox: \"0 0 12 14\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n        react_1.default.createElement(\"path\", { d: \"M10 9.89558C9.49333 9.89558 9.04 10.1064 8.69333 10.4367L3.94 7.52008C3.97333 7.35843 4 7.19679 4 7.02811C4 6.85944 3.97333 6.69779 3.94 6.53614L8.64 3.64759C9 3.999 9.47333 4.21687 10 4.21687C11.1067 4.21687 12 3.2751 12 2.10843C12 0.941767 11.1067 0 10 0C8.89333 0 8 0.941767 8 2.10843C8 2.27711 8.02667 2.43875 8.06 2.6004L3.36 5.48896C3 5.13755 2.52667 4.91968 2 4.91968C0.893333 4.91968 0 5.86145 0 7.02811C0 8.19478 0.893333 9.13655 2 9.13655C2.52667 9.13655 3 8.91867 3.36 8.56727L8.10667 11.491C8.07333 11.6386 8.05333 11.7932 8.05333 11.9478C8.05333 13.0793 8.92667 14 10 14C11.0733 14 11.9467 13.0793 11.9467 11.9478C11.9467 10.8163 11.0733 9.89558 10 9.89558Z\" })),\n    hide: react_1.default.createElement(\"svg\", { width: \"14\", height: \"14\", viewBox: \"0 0 14 14\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n        react_1.default.createElement(\"path\", { d: \"M7 0C3.136 0 0 3.136 0 7C0 10.864 3.136 14 7 14C10.864 14 14 10.864 14 7C14 3.136 10.864 0 7 0ZM7 12.6C3.906 12.6 1.4 10.094 1.4 7C1.4 5.705 1.841 4.515 2.583 3.57L10.43 11.417C9.485 12.159 8.295 12.6 7 12.6ZM11.417 10.43L3.57 2.583C4.515 1.841 5.705 1.4 7 1.4C10.094 1.4 12.6 3.906 12.6 7C12.6 8.295 12.159 9.485 11.417 10.43Z\" })),\n    save: react_1.default.createElement(\"svg\", { width: \"14\", height: \"14\", viewBox: \"0 0 14 14\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n        react_1.default.createElement(\"path\", { d: \"M1.4 2.8H0V12.6C0 13.37 0.63 14 1.4 14H11.2V12.6H1.4V2.8ZM12.6 0H4.2C3.43 0 2.8 0.63 2.8 1.4V9.8C2.8 10.57 3.43 11.2 4.2 11.2H12.6C13.37 11.2 14 10.57 14 9.8V1.4C14 0.63 13.37 0 12.6 0ZM11.9 6.3H9.1V9.1H7.7V6.3H4.9V4.9H7.7V2.1H9.1V4.9H11.9V6.3Z\" })),\n    complain: react_1.default.createElement(\"svg\", { width: \"16\", height: \"14\", viewBox: \"0 0 16 14\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n        react_1.default.createElement(\"path\", { d: \"M0 14H16L8 0L0 14ZM8.72727 11.7895H7.27273V10.3158H8.72727V11.7895ZM8.72727 8.8421H7.27273V5.89474H8.72727V8.8421Z\" }))\n};\nvar LIST = [\n    { As: 'li', text: 'Комментарии', id: generateRandomIndex_1.generateRandomString(), icon: ICONS.comments },\n    { As: 'li', text: 'Поделиться', id: generateRandomIndex_1.generateRandomString(), icon: ICONS.share },\n    { As: 'li', text: 'Скрыть', id: generateRandomIndex_1.generateRandomString(), icon: ICONS.hide },\n    { As: 'li', text: 'Сохранить', id: generateRandomIndex_1.generateRandomString(), icon: ICONS.save },\n    { As: 'li', text: 'Пожаловаться', id: generateRandomIndex_1.generateRandomString(), icon: ICONS.complain }\n];\nfunction DropList() {\n    var handleClick = function (id) {\n        console.log(id);\n    };\n    return (react_1.default.createElement(\"ul\", { className: droplist_less_1.default.list },\n        react_1.default.createElement(GenericList_1.GenericList, { list: LIST.map(merge_1.merge({ onClick: handleClick })) })));\n}\nexports.DropList = DropList;\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/Menu/DropList/DropList.tsx?");
-
-/***/ }),
-
-/***/ "./src/shared/CardsList/Card/Menu/DropList/droplist.less":
-/*!***************************************************************!*\
-  !*** ./src/shared/CardsList/Card/Menu/DropList/droplist.less ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("// Exports\nmodule.exports = {\n\t\"list\": \"droplist__list--236QC\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/Menu/DropList/droplist.less?");
-
-/***/ }),
-
-/***/ "./src/shared/CardsList/Card/Menu/DropList/index.ts":
-/*!**********************************************************!*\
-  !*** ./src/shared/CardsList/Card/Menu/DropList/index.ts ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__exportStar(__webpack_require__(/*! ./DropList */ \"./src/shared/CardsList/Card/Menu/DropList/DropList.tsx\"), exports);\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/Menu/DropList/index.ts?");
-
-/***/ }),
-
 /***/ "./src/shared/CardsList/Card/Menu/Menu.tsx":
 /*!*************************************************!*\
   !*** ./src/shared/CardsList/Card/Menu/Menu.tsx ***!
@@ -188,7 +153,42 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.Menu = void 0;\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nvar menu_less_1 = __importDefault(__webpack_require__(/*! ./menu.less */ \"./src/shared/CardsList/Card/Menu/menu.less\"));\nvar DropList_1 = __webpack_require__(/*! ./DropList */ \"./src/shared/CardsList/Card/Menu/DropList/index.ts\");\nvar Dropdown_1 = __webpack_require__(/*! ../../../Dropdown */ \"./src/shared/Dropdown/index.ts\");\nfunction Menu() {\n    return (react_1.default.createElement(react_1.default.Fragment, null,\n        react_1.default.createElement(\"div\", { className: menu_less_1.default.menu },\n            react_1.default.createElement(Dropdown_1.Dropdown, { onClose: function () { return console.log('closed'); }, onOpen: function () { return console.log('opened'); }, button: react_1.default.createElement(\"button\", { className: menu_less_1.default.menuButton },\n                    react_1.default.createElement(\"svg\", { width: \"5\", height: \"20\", viewBox: \"0 0 5 20\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n                        react_1.default.createElement(\"circle\", { cx: \"2.5\", cy: \"2.5\", r: \"2.5\", fill: \"#D9D9D9\" }),\n                        react_1.default.createElement(\"circle\", { cx: \"2.5\", cy: \"10\", r: \"2.5\", fill: \"#D9D9D9\" }),\n                        react_1.default.createElement(\"circle\", { cx: \"2.5\", cy: \"17.5\", r: \"2.5\", fill: \"#D9D9D9\" }))) },\n                react_1.default.createElement(DropList_1.DropList, null))),\n        react_1.default.createElement(\"div\", { className: menu_less_1.default.controls },\n            react_1.default.createElement(\"div\", { className: menu_less_1.default.karmaCounter },\n                react_1.default.createElement(\"button\", { className: menu_less_1.default.up },\n                    react_1.default.createElement(\"svg\", { width: \"19\", height: \"10\", viewBox: \"0 0 19 10\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n                        react_1.default.createElement(\"path\", { d: \"M9.5 0L0 10H19L9.5 0Z\", fill: \"#D9D9D9\" }))),\n                react_1.default.createElement(\"span\", { className: menu_less_1.default.karmaValue }, \"234\"),\n                react_1.default.createElement(\"button\", { className: menu_less_1.default.down },\n                    react_1.default.createElement(\"svg\", { className: menu_less_1.default.down, width: \"19\", height: \"10\", viewBox: \"0 0 19 10\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n                        react_1.default.createElement(\"path\", { d: \"M9.5 0L0 10H19L9.5 0Z\", fill: \"#D9D9D9\" })))),\n            react_1.default.createElement(\"button\", { className: menu_less_1.default.commentsButton },\n                react_1.default.createElement(\"svg\", { width: \"15\", height: \"15\", viewBox: \"0 0 15 15\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n                    react_1.default.createElement(\"path\", { d: \"M12.75 0H1.41667C0.6375 0 0 0.6375 0 1.41667V9.91667C0 10.6958 0.6375 11.3333 1.41667 11.3333H11.3333L14.1667 14.1667V1.41667C14.1667 0.6375 13.5292 0 12.75 0ZM11.3333 8.5H2.83333V7.08333H11.3333V8.5ZM11.3333 6.375H2.83333V4.95833H11.3333V6.375ZM11.3333 4.25H2.83333V2.83333H11.3333V4.25Z\", fill: \"#999999\" })),\n                react_1.default.createElement(\"span\", { className: menu_less_1.default.commentsNumber }, \"12\")),\n            react_1.default.createElement(\"div\", { className: menu_less_1.default.actions },\n                react_1.default.createElement(\"button\", { className: menu_less_1.default.shareButton },\n                    react_1.default.createElement(\"svg\", { width: \"20\", height: \"20\", viewBox: \"0 0 20 20\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n                        react_1.default.createElement(\"circle\", { cx: \"10\", cy: \"10\", r: \"10\", fill: \"#C4C4C4\" }),\n                        react_1.default.createElement(\"path\", { d: \"M11.6667 12.0683C11.3289 12.0683 11.0267 12.2189 10.7956 12.4548L7.62667 10.3715C7.64889 10.256 7.66667 10.1406 7.66667 10.0201C7.66667 9.8996 7.64889 9.78414 7.62667 9.66867L10.76 7.60542C11 7.85643 11.3156 8.01205 11.6667 8.01205C12.4044 8.01205 13 7.33936 13 6.50602C13 5.67269 12.4044 5 11.6667 5C10.9289 5 10.3333 5.67269 10.3333 6.50602C10.3333 6.62651 10.3511 6.74197 10.3733 6.85743L7.24 8.92068C7 8.66968 6.68444 8.51406 6.33333 8.51406C5.59556 8.51406 5 9.18675 5 10.0201C5 10.8534 5.59556 11.5261 6.33333 11.5261C6.68444 11.5261 7 11.3705 7.24 11.1195L10.4044 13.2078C10.3822 13.3133 10.3689 13.4237 10.3689 13.5341C10.3689 14.3424 10.9511 15 11.6667 15C12.3822 15 12.9644 14.3424 12.9644 13.5341C12.9644 12.7259 12.3822 12.0683 11.6667 12.0683Z\", fill: \"white\" }))),\n                react_1.default.createElement(\"button\", { className: menu_less_1.default.saveButton },\n                    react_1.default.createElement(\"svg\", { width: \"20\", height: \"20\", viewBox: \"0 0 20 20\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n                        react_1.default.createElement(\"circle\", { cx: \"10\", cy: \"10\", r: \"10\", fill: \"#C4C4C4\" }),\n                        react_1.default.createElement(\"path\", { d: \"M6 7H5V14C5 14.55 5.45 15 6 15H13V14H6V7ZM14 5H8C7.45 5 7 5.45 7 6V12C7 12.55 7.45 13 8 13H14C14.55 13 15 12.55 15 12V6C15 5.45 14.55 5 14 5ZM13.5 9.5H11.5V11.5H10.5V9.5H8.5V8.5H10.5V6.5H11.5V8.5H13.5V9.5Z\", fill: \"white\" })))))));\n}\nexports.Menu = Menu;\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/Menu/Menu.tsx?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.Menu = void 0;\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nvar menu_less_1 = __importDefault(__webpack_require__(/*! ./menu.less */ \"./src/shared/CardsList/Card/Menu/menu.less\"));\nvar Dropdown_1 = __webpack_require__(/*! ../../../Dropdown */ \"./src/shared/Dropdown/index.ts\");\nvar Icons_1 = __webpack_require__(/*! ../../../Icons */ \"./src/shared/Icons/index.ts\");\nvar MenuItemsList_1 = __webpack_require__(/*! ./MenuItemsList */ \"./src/shared/CardsList/Card/Menu/MenuItemsList/index.ts\");\nvar Text_1 = __webpack_require__(/*! ../../../Text */ \"./src/shared/Text/index.ts\");\nfunction Menu() {\n    return (react_1.default.createElement(react_1.default.Fragment, null,\n        react_1.default.createElement(\"div\", { className: menu_less_1.default.menu },\n            react_1.default.createElement(Dropdown_1.Dropdown, { onClose: function () { return console.log('closed'); }, onOpen: function () { return console.log('opened'); }, button: react_1.default.createElement(\"button\", { className: menu_less_1.default.menuButton },\n                    react_1.default.createElement(Icons_1.Icon, { name: Icons_1.EIcons.menu })) },\n                react_1.default.createElement(\"div\", { className: menu_less_1.default.dropdown },\n                    react_1.default.createElement(MenuItemsList_1.MenuItemsList, { postId: '1234' }),\n                    react_1.default.createElement(\"button\", { className: menu_less_1.default.closeButton },\n                        react_1.default.createElement(Text_1.Text, { mobileSize: 12, size: 14, color: Text_1.EColor.gray66 }, \"\\u0417\\u0430\\u043A\\u0440\\u044B\\u0442\\u044C\"))))),\n        react_1.default.createElement(\"div\", { className: menu_less_1.default.controls },\n            react_1.default.createElement(\"div\", { className: menu_less_1.default.karmaCounter },\n                react_1.default.createElement(\"button\", { className: menu_less_1.default.up },\n                    react_1.default.createElement(\"svg\", { width: \"19\", height: \"10\", viewBox: \"0 0 19 10\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n                        react_1.default.createElement(\"path\", { d: \"M9.5 0L0 10H19L9.5 0Z\", fill: \"#D9D9D9\" }))),\n                react_1.default.createElement(\"span\", { className: menu_less_1.default.karmaValue }, \"234\"),\n                react_1.default.createElement(\"button\", { className: menu_less_1.default.down },\n                    react_1.default.createElement(\"svg\", { className: menu_less_1.default.down, width: \"19\", height: \"10\", viewBox: \"0 0 19 10\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n                        react_1.default.createElement(\"path\", { d: \"M9.5 0L0 10H19L9.5 0Z\", fill: \"#D9D9D9\" })))),\n            react_1.default.createElement(\"button\", { className: menu_less_1.default.commentsButton },\n                react_1.default.createElement(\"svg\", { width: \"15\", height: \"15\", viewBox: \"0 0 15 15\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n                    react_1.default.createElement(\"path\", { d: \"M12.75 0H1.41667C0.6375 0 0 0.6375 0 1.41667V9.91667C0 10.6958 0.6375 11.3333 1.41667 11.3333H11.3333L14.1667 14.1667V1.41667C14.1667 0.6375 13.5292 0 12.75 0ZM11.3333 8.5H2.83333V7.08333H11.3333V8.5ZM11.3333 6.375H2.83333V4.95833H11.3333V6.375ZM11.3333 4.25H2.83333V2.83333H11.3333V4.25Z\", fill: \"#999999\" })),\n                react_1.default.createElement(\"span\", { className: menu_less_1.default.commentsNumber }, \"12\")),\n            react_1.default.createElement(\"div\", { className: menu_less_1.default.actions },\n                react_1.default.createElement(\"button\", { className: menu_less_1.default.shareButton },\n                    react_1.default.createElement(\"svg\", { width: \"20\", height: \"20\", viewBox: \"0 0 20 20\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n                        react_1.default.createElement(\"circle\", { cx: \"10\", cy: \"10\", r: \"10\", fill: \"#C4C4C4\" }),\n                        react_1.default.createElement(\"path\", { d: \"M11.6667 12.0683C11.3289 12.0683 11.0267 12.2189 10.7956 12.4548L7.62667 10.3715C7.64889 10.256 7.66667 10.1406 7.66667 10.0201C7.66667 9.8996 7.64889 9.78414 7.62667 9.66867L10.76 7.60542C11 7.85643 11.3156 8.01205 11.6667 8.01205C12.4044 8.01205 13 7.33936 13 6.50602C13 5.67269 12.4044 5 11.6667 5C10.9289 5 10.3333 5.67269 10.3333 6.50602C10.3333 6.62651 10.3511 6.74197 10.3733 6.85743L7.24 8.92068C7 8.66968 6.68444 8.51406 6.33333 8.51406C5.59556 8.51406 5 9.18675 5 10.0201C5 10.8534 5.59556 11.5261 6.33333 11.5261C6.68444 11.5261 7 11.3705 7.24 11.1195L10.4044 13.2078C10.3822 13.3133 10.3689 13.4237 10.3689 13.5341C10.3689 14.3424 10.9511 15 11.6667 15C12.3822 15 12.9644 14.3424 12.9644 13.5341C12.9644 12.7259 12.3822 12.0683 11.6667 12.0683Z\", fill: \"white\" }))),\n                react_1.default.createElement(\"button\", { className: menu_less_1.default.saveButton },\n                    react_1.default.createElement(\"svg\", { width: \"20\", height: \"20\", viewBox: \"0 0 20 20\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n                        react_1.default.createElement(\"circle\", { cx: \"10\", cy: \"10\", r: \"10\", fill: \"#C4C4C4\" }),\n                        react_1.default.createElement(\"path\", { d: \"M6 7H5V14C5 14.55 5.45 15 6 15H13V14H6V7ZM14 5H8C7.45 5 7 5.45 7 6V12C7 12.55 7.45 13 8 13H14C14.55 13 15 12.55 15 12V6C15 5.45 14.55 5 14 5ZM13.5 9.5H11.5V11.5H10.5V9.5H8.5V8.5H10.5V6.5H11.5V8.5H13.5V9.5Z\", fill: \"white\" })))))));\n}\nexports.Menu = Menu;\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/Menu/Menu.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/CardsList/Card/Menu/MenuItemsList/MenuItemsList.tsx":
+/*!************************************************************************!*\
+  !*** ./src/shared/CardsList/Card/Menu/MenuItemsList/MenuItemsList.tsx ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\n}) : function(o, v) {\n    o[\"default\"] = v;\n});\nvar __importStar = (this && this.__importStar) || function (mod) {\n    if (mod && mod.__esModule) return mod;\n    var result = {};\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\n    __setModuleDefault(result, mod);\n    return result;\n};\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.MenuItemsList = void 0;\nvar React = __importStar(__webpack_require__(/*! react */ \"react\"));\nvar menuitemslist_less_1 = __importDefault(__webpack_require__(/*! ./menuitemslist.less */ \"./src/shared/CardsList/Card/Menu/MenuItemsList/menuitemslist.less\"));\nvar Text_1 = __webpack_require__(/*! ../../../../Text */ \"./src/shared/Text/index.ts\");\nvar classnames_1 = __importDefault(__webpack_require__(/*! classnames */ \"classnames\"));\nvar Icons_1 = __webpack_require__(/*! ../../../../Icons */ \"./src/shared/Icons/index.ts\");\nfunction MenuItemsList(_a) {\n    var postId = _a.postId;\n    return (React.createElement(\"ul\", { className: menuitemslist_less_1.default.menuItemsList },\n        React.createElement(\"li\", { className: classnames_1.default(menuitemslist_less_1.default.menuItem, menuitemslist_less_1.default.mobileHide), onClick: function () { return console.log(postId); } },\n            React.createElement(Icons_1.Icon, { name: Icons_1.EIcons.comments, size: 14 }),\n            React.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.gray99 }, \"\\u041A\\u043E\\u043C\\u043C\\u0435\\u043D\\u0442\\u0430\\u0440\\u0438\\u0438\")),\n        React.createElement(\"div\", { className: classnames_1.default(menuitemslist_less_1.default.divider, menuitemslist_less_1.default.mobileHide) }),\n        React.createElement(\"li\", { className: classnames_1.default(menuitemslist_less_1.default.menuItem, menuitemslist_less_1.default.mobileHide), onClick: function () { return console.log(postId); } },\n            React.createElement(Icons_1.Icon, { name: Icons_1.EIcons.share, size: 12 }),\n            React.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.gray99 }, \"\\u041F\\u043E\\u0434\\u0435\\u043B\\u0438\\u0442\\u044C\\u0441\\u044F\")),\n        React.createElement(\"div\", { className: classnames_1.default(menuitemslist_less_1.default.divider, menuitemslist_less_1.default.mobileHide) }),\n        React.createElement(\"li\", { className: classnames_1.default(menuitemslist_less_1.default.menuItem), onClick: function () { return console.log(postId); } },\n            React.createElement(Icons_1.Icon, { name: Icons_1.EIcons.block, size: 14 }),\n            React.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.gray99 }, \"\\u0421\\u043A\\u0440\\u044B\\u0442\\u044C\")),\n        React.createElement(\"div\", { className: menuitemslist_less_1.default.divider }),\n        React.createElement(\"li\", { className: classnames_1.default(menuitemslist_less_1.default.menuItem, menuitemslist_less_1.default.mobileHide), onClick: function () { return console.log(postId); } },\n            React.createElement(Icons_1.Icon, { name: Icons_1.EIcons.save, size: 14 }),\n            React.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.gray99 }, \"\\u0421\\u043E\\u0445\\u0440\\u0430\\u043D\\u0438\\u0442\\u044C\")),\n        React.createElement(\"div\", { className: classnames_1.default(menuitemslist_less_1.default.divider, menuitemslist_less_1.default.mobileHide) }),\n        React.createElement(\"li\", { className: menuitemslist_less_1.default.menuItem },\n            React.createElement(Icons_1.Icon, { name: Icons_1.EIcons.warning, size: 16 }),\n            React.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.gray99 }, \"\\u041F\\u043E\\u0436\\u0430\\u043B\\u043E\\u0432\\u0430\\u0442\\u044C\\u0441\\u044F\"))));\n}\nexports.MenuItemsList = MenuItemsList;\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/Menu/MenuItemsList/MenuItemsList.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/CardsList/Card/Menu/MenuItemsList/index.ts":
+/*!***************************************************************!*\
+  !*** ./src/shared/CardsList/Card/Menu/MenuItemsList/index.ts ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__exportStar(__webpack_require__(/*! ./MenuItemsList */ \"./src/shared/CardsList/Card/Menu/MenuItemsList/MenuItemsList.tsx\"), exports);\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/Menu/MenuItemsList/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/CardsList/Card/Menu/MenuItemsList/menuitemslist.less":
+/*!*************************************************************************!*\
+  !*** ./src/shared/CardsList/Card/Menu/MenuItemsList/menuitemslist.less ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// Exports\nmodule.exports = {\n\t\"menuItemsList\": \"menuitemslist__menuItemsList--3OHVa\",\n\t\"menuItem\": \"menuitemslist__menuItem--3MKC7\",\n\t\"divider\": \"menuitemslist__divider--1ryOt\",\n\t\"desktopHide\": \"menuitemslist__desktopHide--1BrrG\",\n\t\"tabletHide\": \"menuitemslist__tabletHide--6uiPY\",\n\t\"mobileHide\": \"menuitemslist__mobileHide--2Ckyw\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/Menu/MenuItemsList/menuitemslist.less?");
 
 /***/ }),
 
@@ -211,7 +211,7 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("// Exports\nmodule.exports = {\n\t\"menu\": \"menu__menu--3HgxL\",\n\t\"menuButton\": \"menu__menuButton--3BpWR\",\n\t\"controls\": \"menu__controls--3_TxC\",\n\t\"karmaCounter\": \"menu__karmaCounter--3csd5\",\n\t\"karmaValue\": \"menu__karmaValue--2TnoY\",\n\t\"down\": \"menu__down--4JGap\",\n\t\"commentsButton\": \"menu__commentsButton--1ud-n\",\n\t\"commentsNumber\": \"menu__commentsNumber--lq7h_\",\n\t\"shareButton\": \"menu__shareButton--zCjxq\",\n\t\"saveButton\": \"menu__saveButton--1HppH\",\n\t\"actions\": \"menu__actions--1Ht9u\",\n\t\"up\": \"menu__up--2JDGx\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/Menu/menu.less?");
+eval("// Exports\nmodule.exports = {\n\t\"menu\": \"menu__menu--3HgxL\",\n\t\"menuButton\": \"menu__menuButton--3BpWR\",\n\t\"dropdown\": \"menu__dropdown--2uuMQ\",\n\t\"closeButton\": \"menu__closeButton--1cFw3\",\n\t\"controls\": \"menu__controls--3_TxC\",\n\t\"karmaCounter\": \"menu__karmaCounter--3csd5\",\n\t\"karmaValue\": \"menu__karmaValue--2TnoY\",\n\t\"down\": \"menu__down--4JGap\",\n\t\"commentsButton\": \"menu__commentsButton--1ud-n\",\n\t\"commentsNumber\": \"menu__commentsNumber--lq7h_\",\n\t\"shareButton\": \"menu__shareButton--zCjxq\",\n\t\"saveButton\": \"menu__saveButton--1HppH\",\n\t\"actions\": \"menu__actions--1Ht9u\",\n\t\"up\": \"menu__up--2JDGx\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/CardsList/Card/Menu/menu.less?");
 
 /***/ }),
 
@@ -413,18 +413,6 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 
 /***/ }),
 
-/***/ "./src/shared/GenericList/GenericList.tsx":
-/*!************************************************!*\
-  !*** ./src/shared/GenericList/GenericList.tsx ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.GenericList = void 0;\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nvar noop = function () {\n};\nfunction GenericList(_a) {\n    var list = _a.list;\n    return (react_1.default.createElement(react_1.default.Fragment, null, list.map(function (_a) {\n        var _b = _a.As, As = _b === void 0 ? 'div' : _b, text = _a.text, _c = _a.onClick, onClick = _c === void 0 ? noop : _c, className = _a.className, id = _a.id, href = _a.href, icon = _a.icon;\n        return (react_1.default.createElement(As, { className: className, onClick: function () { return onClick(id); }, key: id, href: href },\n            icon,\n            text));\n    })));\n}\nexports.GenericList = GenericList;\n\n\n//# sourceURL=webpack:///./src/shared/GenericList/GenericList.tsx?");
-
-/***/ }),
-
 /***/ "./src/shared/Header/Header.tsx":
 /*!**************************************!*\
   !*** ./src/shared/Header/Header.tsx ***!
@@ -565,6 +553,113 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 
 /***/ }),
 
+/***/ "./src/shared/Icons/BlockIcon.tsx":
+/*!****************************************!*\
+  !*** ./src/shared/Icons/BlockIcon.tsx ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\n}) : function(o, v) {\n    o[\"default\"] = v;\n});\nvar __importStar = (this && this.__importStar) || function (mod) {\n    if (mod && mod.__esModule) return mod;\n    var result = {};\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\n    __setModuleDefault(result, mod);\n    return result;\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.BlockIcon = void 0;\nvar React = __importStar(__webpack_require__(/*! react */ \"react\"));\nfunction BlockIcon() {\n    return (React.createElement(\"svg\", { viewBox: \"0 0 12 12\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n        React.createElement(\"path\", { d: \"M6 0C2.688 0 0 2.688 0 6C0 9.312 2.688 12 6 12C9.312 12 12 9.312 12 6C12 2.688 9.312 0 6 0ZM6 10.8C3.348 10.8 1.2 8.652 1.2 6C1.2 4.89 1.578 3.87 2.214 3.06L8.94 9.786C8.13 10.422 7.11 10.8 6 10.8ZM9.786 8.94L3.06 2.214C3.87 1.578 4.89 1.2 6 1.2C8.652 1.2 10.8 3.348 10.8 6C10.8 7.11 10.422 8.13 9.786 8.94Z\", fill: \"#999999\" })));\n}\nexports.BlockIcon = BlockIcon;\n\n\n//# sourceURL=webpack:///./src/shared/Icons/BlockIcon.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Icons/CommentsIcon.tsx":
+/*!*******************************************!*\
+  !*** ./src/shared/Icons/CommentsIcon.tsx ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\n}) : function(o, v) {\n    o[\"default\"] = v;\n});\nvar __importStar = (this && this.__importStar) || function (mod) {\n    if (mod && mod.__esModule) return mod;\n    var result = {};\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\n    __setModuleDefault(result, mod);\n    return result;\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.CommentsIcon = void 0;\nvar React = __importStar(__webpack_require__(/*! react */ \"react\"));\nfunction CommentsIcon() {\n    return (React.createElement(\"svg\", { viewBox: \"0 0 15 15\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n        React.createElement(\"path\", { d: \"M12.75 0.416626H1.41667C0.6375 0.416626 0 1.05413 0 1.83329V10.3333C0 11.1125 0.6375 11.75 1.41667 11.75H11.3333L14.1667 14.5833V1.83329C14.1667 1.05413 13.5292 0.416626 12.75 0.416626ZM11.3333 8.91663H2.83333V7.49996H11.3333V8.91663ZM11.3333 6.79163H2.83333V5.37496H11.3333V6.79163ZM11.3333 4.66663H2.83333V3.24996H11.3333V4.66663Z\", fill: \"#999999\" })));\n}\nexports.CommentsIcon = CommentsIcon;\n\n\n//# sourceURL=webpack:///./src/shared/Icons/CommentsIcon.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Icons/Icon.tsx":
+/*!***********************************!*\
+  !*** ./src/shared/Icons/Icon.tsx ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.Icon = exports.EIcons = void 0;\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nvar icon_less_1 = __importDefault(__webpack_require__(/*! ./icon.less */ \"./src/shared/Icons/icon.less\"));\nvar classnames_1 = __importDefault(__webpack_require__(/*! classnames */ \"classnames\"));\nvar BlockIcon_1 = __webpack_require__(/*! ./BlockIcon */ \"./src/shared/Icons/BlockIcon.tsx\");\nvar WarningIcon_1 = __webpack_require__(/*! ./WarningIcon */ \"./src/shared/Icons/WarningIcon.tsx\");\nvar CommentsIcon_1 = __webpack_require__(/*! ./CommentsIcon */ \"./src/shared/Icons/CommentsIcon.tsx\");\nvar ShareIcon_1 = __webpack_require__(/*! ./ShareIcon */ \"./src/shared/Icons/ShareIcon.tsx\");\nvar SaveIcon_1 = __webpack_require__(/*! ./SaveIcon */ \"./src/shared/Icons/SaveIcon.tsx\");\nvar MenuIcon_1 = __webpack_require__(/*! ./MenuIcon */ \"./src/shared/Icons/MenuIcon.tsx\");\nvar EIcons;\n(function (EIcons) {\n    EIcons[\"block\"] = \"BlockIcon\";\n    EIcons[\"warning\"] = \"WarningIcon\";\n    EIcons[\"comments\"] = \"CommentsIcon\";\n    EIcons[\"share\"] = \"ShareIcon\";\n    EIcons[\"save\"] = \"SaveIcon\";\n    EIcons[\"menu\"] = \"MenuIcon\";\n})(EIcons = exports.EIcons || (exports.EIcons = {}));\nvar icons = {\n    BlockIcon: react_1.default.createElement(BlockIcon_1.BlockIcon, null),\n    WarningIcon: react_1.default.createElement(WarningIcon_1.WarningIcon, null),\n    CommentsIcon: react_1.default.createElement(CommentsIcon_1.CommentsIcon, null),\n    ShareIcon: react_1.default.createElement(ShareIcon_1.ShareIcon, null),\n    SaveIcon: react_1.default.createElement(SaveIcon_1.SaveIcon, null),\n    MenuIcon: react_1.default.createElement(MenuIcon_1.MenuIcon, null)\n};\nfunction Icon(props) {\n    var _a, _b, _c, _d;\n    var name = props.name, size = props.size, mobileSize = props.mobileSize, desktopSize = props.desktopSize, tabletSize = props.tabletSize;\n    var classes = classnames_1.default((_a = {}, _a[icon_less_1.default[\"s\" + size]] = size, _a), (_b = {}, _b[icon_less_1.default[\"m\" + mobileSize]] = mobileSize, _b), (_c = {}, _c[icon_less_1.default[\"t\" + tabletSize]] = tabletSize, _c), (_d = {}, _d[icon_less_1.default[\"d\" + desktopSize]] = desktopSize, _d));\n    return (react_1.default.createElement(\"i\", { className: classes }, icons[name]));\n}\nexports.Icon = Icon;\n\n\n//# sourceURL=webpack:///./src/shared/Icons/Icon.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Icons/MenuIcon.tsx":
+/*!***************************************!*\
+  !*** ./src/shared/Icons/MenuIcon.tsx ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.MenuIcon = void 0;\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nfunction MenuIcon() {\n    return (react_1.default.createElement(\"svg\", { width: \"5\", height: \"20\", viewBox: \"0 0 5 20\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n        react_1.default.createElement(\"circle\", { cx: \"2.5\", cy: \"2.5\", r: \"2.5\", fill: \"#D9D9D9\" }),\n        react_1.default.createElement(\"circle\", { cx: \"2.5\", cy: \"10\", r: \"2.5\", fill: \"#D9D9D9\" }),\n        react_1.default.createElement(\"circle\", { cx: \"2.5\", cy: \"17.5\", r: \"2.5\", fill: \"#D9D9D9\" })));\n}\nexports.MenuIcon = MenuIcon;\n\n\n//# sourceURL=webpack:///./src/shared/Icons/MenuIcon.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Icons/SaveIcon.tsx":
+/*!***************************************!*\
+  !*** ./src/shared/Icons/SaveIcon.tsx ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\n}) : function(o, v) {\n    o[\"default\"] = v;\n});\nvar __importStar = (this && this.__importStar) || function (mod) {\n    if (mod && mod.__esModule) return mod;\n    var result = {};\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\n    __setModuleDefault(result, mod);\n    return result;\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.SaveIcon = void 0;\nvar React = __importStar(__webpack_require__(/*! react */ \"react\"));\nfunction SaveIcon() {\n    return (React.createElement(\"svg\", { viewBox: \"0 0 14 14\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n        React.createElement(\"path\", { d: \"M1.4 2.8H0V12.6C0 13.37 0.63 14 1.4 14H11.2V12.6H1.4V2.8ZM12.6 0H4.2C3.43 0 2.8 0.63 2.8 1.4V9.8C2.8 10.57 3.43 11.2 4.2 11.2H12.6C13.37 11.2 14 10.57 14 9.8V1.4C14 0.63 13.37 0 12.6 0ZM11.9 6.3H9.1V9.1H7.7V6.3H4.9V4.9H7.7V2.1H9.1V4.9H11.9V6.3Z\", fill: \"#979797\" })));\n}\nexports.SaveIcon = SaveIcon;\n\n\n//# sourceURL=webpack:///./src/shared/Icons/SaveIcon.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Icons/ShareIcon.tsx":
+/*!****************************************!*\
+  !*** ./src/shared/Icons/ShareIcon.tsx ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\n}) : function(o, v) {\n    o[\"default\"] = v;\n});\nvar __importStar = (this && this.__importStar) || function (mod) {\n    if (mod && mod.__esModule) return mod;\n    var result = {};\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\n    __setModuleDefault(result, mod);\n    return result;\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.ShareIcon = void 0;\nvar React = __importStar(__webpack_require__(/*! react */ \"react\"));\nfunction ShareIcon() {\n    return (React.createElement(\"svg\", { viewBox: \"0 0 12 14\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n        React.createElement(\"path\", { d: \"M10 9.89558C9.49333 9.89558 9.04 10.1064 8.69333 10.4367L3.94 7.52008C3.97333 7.35843 4 7.19679 4 7.02811C4 6.85944 3.97333 6.69779 3.94 6.53614L8.64 3.64759C9 3.999 9.47333 4.21687 10 4.21687C11.1067 4.21687 12 3.2751 12 2.10843C12 0.941767 11.1067 0 10 0C8.89333 0 8 0.941767 8 2.10843C8 2.27711 8.02667 2.43875 8.06 2.6004L3.36 5.48896C3 5.13755 2.52667 4.91968 2 4.91968C0.893333 4.91968 0 5.86145 0 7.02811C0 8.19478 0.893333 9.13655 2 9.13655C2.52667 9.13655 3 8.91867 3.36 8.56727L8.10667 11.491C8.07333 11.6386 8.05333 11.7932 8.05333 11.9478C8.05333 13.0793 8.92667 14 10 14C11.0733 14 11.9467 13.0793 11.9467 11.9478C11.9467 10.8163 11.0733 9.89558 10 9.89558Z\", fill: \"#999999\" })));\n}\nexports.ShareIcon = ShareIcon;\n\n\n//# sourceURL=webpack:///./src/shared/Icons/ShareIcon.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Icons/WarningIcon.tsx":
+/*!******************************************!*\
+  !*** ./src/shared/Icons/WarningIcon.tsx ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\n}) : function(o, v) {\n    o[\"default\"] = v;\n});\nvar __importStar = (this && this.__importStar) || function (mod) {\n    if (mod && mod.__esModule) return mod;\n    var result = {};\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\n    __setModuleDefault(result, mod);\n    return result;\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.WarningIcon = void 0;\nvar React = __importStar(__webpack_require__(/*! react */ \"react\"));\nfunction WarningIcon() {\n    return (React.createElement(\"svg\", { viewBox: \"0 0 14 12\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\n        React.createElement(\"path\", { d: \"M0 12H14L7 0L0 12ZM7.63636 10.1053H6.36364V8.8421H7.63636V10.1053ZM7.63636 7.57895H6.36364V5.05263H7.63636V7.57895Z\", fill: \"#999999\" })));\n}\nexports.WarningIcon = WarningIcon;\n\n\n//# sourceURL=webpack:///./src/shared/Icons/WarningIcon.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Icons/icon.less":
+/*!************************************!*\
+  !*** ./src/shared/Icons/icon.less ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// Exports\nmodule.exports = {\n\t\"s10\": \"icon__s10--3u-BY\",\n\t\"s12\": \"icon__s12--vDI6P\",\n\t\"s14\": \"icon__s14--bJ5NH\",\n\t\"s16\": \"icon__s16--3admG\",\n\t\"s20\": \"icon__s20--179PP\",\n\t\"m20\": \"icon__m20--2sfYq\",\n\t\"m16\": \"icon__m16--2l2jK\",\n\t\"m14\": \"icon__m14--2M8Lo\",\n\t\"m12\": \"icon__m12--2QEIc\",\n\t\"m10\": \"icon__m10--p2594\",\n\t\"t20\": \"icon__t20--8pVp0\",\n\t\"t16\": \"icon__t16--dBI3B\",\n\t\"t14\": \"icon__t14--3g0xV\",\n\t\"t12\": \"icon__t12--1vWn6\",\n\t\"t10\": \"icon__t10--S8V-h\",\n\t\"d20\": \"icon__d20--31F1D\",\n\t\"d16\": \"icon__d16--1OqDx\",\n\t\"d14\": \"icon__d14--2W9uK\",\n\t\"d12\": \"icon__d12--14aPX\",\n\t\"d10\": \"icon__d10--1lVNs\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Icons/icon.less?");
+
+/***/ }),
+
+/***/ "./src/shared/Icons/index.ts":
+/*!***********************************!*\
+  !*** ./src/shared/Icons/index.ts ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__exportStar(__webpack_require__(/*! ./BlockIcon */ \"./src/shared/Icons/BlockIcon.tsx\"), exports);\n__exportStar(__webpack_require__(/*! ./CommentsIcon */ \"./src/shared/Icons/CommentsIcon.tsx\"), exports);\n__exportStar(__webpack_require__(/*! ./Icon */ \"./src/shared/Icons/Icon.tsx\"), exports);\n__exportStar(__webpack_require__(/*! ./MenuIcon */ \"./src/shared/Icons/MenuIcon.tsx\"), exports);\n__exportStar(__webpack_require__(/*! ./SaveIcon */ \"./src/shared/Icons/SaveIcon.tsx\"), exports);\n__exportStar(__webpack_require__(/*! ./ShareIcon */ \"./src/shared/Icons/ShareIcon.tsx\"), exports);\n__exportStar(__webpack_require__(/*! ./WarningIcon */ \"./src/shared/Icons/WarningIcon.tsx\"), exports);\n\n\n//# sourceURL=webpack:///./src/shared/Icons/index.ts?");
+
+/***/ }),
+
 /***/ "./src/shared/Layout/Layout.tsx":
 /*!**************************************!*\
   !*** ./src/shared/Layout/Layout.tsx ***!
@@ -600,39 +695,49 @@ eval("// Exports\nmodule.exports = {\n\t\"layout\": \"layout__layout--1XuYy\"\n}
 
 /***/ }),
 
-/***/ "./src/utils/js/assoc.ts":
-/*!*******************************!*\
-  !*** ./src/utils/js/assoc.ts ***!
-  \*******************************/
+/***/ "./src/shared/Text/Text.tsx":
+/*!**********************************!*\
+  !*** ./src/shared/Text/Text.tsx ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __assign = (this && this.__assign) || function () {\n    __assign = Object.assign || function(t) {\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\n            s = arguments[i];\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\n                t[p] = s[p];\n        }\n        return t;\n    };\n    return __assign.apply(this, arguments);\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.assoc = void 0;\nfunction assoc(key, value) {\n    return function (obj) {\n        var _a;\n        return (__assign(__assign({}, obj), (_a = {}, _a[key] = value, _a)));\n    };\n}\nexports.assoc = assoc;\n\n\n//# sourceURL=webpack:///./src/utils/js/assoc.ts?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.Text = exports.EColor = void 0;\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nvar text_less_1 = __importDefault(__webpack_require__(/*! ./text.less */ \"./src/shared/Text/text.less\"));\nvar classnames_1 = __importDefault(__webpack_require__(/*! classnames */ \"classnames\"));\nvar EColor;\n(function (EColor) {\n    EColor[\"black\"] = \"black\";\n    EColor[\"orange\"] = \"orange\";\n    EColor[\"green\"] = \"green\";\n    EColor[\"white\"] = \"white\";\n    EColor[\"grayF4\"] = \"grayF4\";\n    EColor[\"grayF3\"] = \"grayF3\";\n    EColor[\"grayD9\"] = \"grayD9\";\n    EColor[\"grayC4\"] = \"grayC4\";\n    EColor[\"gray99\"] = \"gray99\";\n    EColor[\"gray66\"] = \"gray66\";\n})(EColor = exports.EColor || (exports.EColor = {}));\nfunction Text(props) {\n    var _a, _b, _c, _d;\n    var _e = props.As, As = _e === void 0 ? 'span' : _e, _f = props.color, color = _f === void 0 ? EColor.black : _f, _g = props.bold, bold = _g === void 0 ? false : _g, children = props.children, size = props.size, mobileSize = props.mobileSize, desktopSize = props.desktopSize, tabletSize = props.tabletSize;\n    var classes = classnames_1.default(text_less_1.default[\"s\" + size], text_less_1.default[color], (_a = {}, _a[text_less_1.default.bold] = bold, _a), (_b = {}, _b[text_less_1.default[\"m\" + mobileSize]] = mobileSize, _b), (_c = {}, _c[text_less_1.default[\"t\" + tabletSize]] = tabletSize, _c), (_d = {}, _d[text_less_1.default[\"d\" + desktopSize]] = desktopSize, _d));\n    return (react_1.default.createElement(As, { className: classes }, children));\n}\nexports.Text = Text;\n\n\n//# sourceURL=webpack:///./src/shared/Text/Text.tsx?");
 
 /***/ }),
 
-/***/ "./src/utils/js/merge.ts":
-/*!*******************************!*\
-  !*** ./src/utils/js/merge.ts ***!
-  \*******************************/
+/***/ "./src/shared/Text/index.ts":
+/*!**********************************!*\
+  !*** ./src/shared/Text/index.ts ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __assign = (this && this.__assign) || function () {\n    __assign = Object.assign || function(t) {\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\n            s = arguments[i];\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\n                t[p] = s[p];\n        }\n        return t;\n    };\n    return __assign.apply(this, arguments);\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.merge = void 0;\nfunction merge(obj) {\n    return function (obj2) { return (__assign(__assign({}, obj), obj2)); };\n}\nexports.merge = merge;\n\n\n//# sourceURL=webpack:///./src/utils/js/merge.ts?");
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\n__exportStar(__webpack_require__(/*! ./Text */ \"./src/shared/Text/Text.tsx\"), exports);\n\n\n//# sourceURL=webpack:///./src/shared/Text/index.ts?");
 
 /***/ }),
 
-/***/ "./src/utils/react/generateRandomIndex.ts":
-/*!************************************************!*\
-  !*** ./src/utils/react/generateRandomIndex.ts ***!
-  \************************************************/
+/***/ "./src/shared/Text/text.less":
+/*!***********************************!*\
+  !*** ./src/shared/Text/text.less ***!
+  \***********************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.generateId = exports.assignId = exports.generateRandomString = void 0;\nvar assoc_1 = __webpack_require__(/*! ../js/assoc */ \"./src/utils/js/assoc.ts\");\nexports.generateRandomString = function () { return Math.random().toString(36).substring(2, 15); };\nexports.assignId = assoc_1.assoc('id', exports.generateRandomString());\nexports.generateId = function (obj) { return exports.assignId(obj); };\n\n\n//# sourceURL=webpack:///./src/utils/react/generateRandomIndex.ts?");
+eval("// Exports\nmodule.exports = {\n\t\"s28\": \"text__s28--1E4Mt\",\n\t\"s20\": \"text__s20--1AGUg\",\n\t\"s16\": \"text__s16--1iKkN\",\n\t\"s14\": \"text__s14--GUcxB\",\n\t\"s12\": \"text__s12--24WRT\",\n\t\"s10\": \"text__s10---RkRT\",\n\t\"bold\": \"text__bold--3OTg1\",\n\t\"black\": \"text__black--gQAnH\",\n\t\"orange\": \"text__orange--c-ima\",\n\t\"green\": \"text__green--3asvn\",\n\t\"white\": \"text__white--PH1j-\",\n\t\"grayF4\": \"text__grayF4--2NFgw\",\n\t\"grayF3\": \"text__grayF3--1LNkK\",\n\t\"grayD9\": \"text__grayD9--3hczu\",\n\t\"grayC4\": \"text__grayC4--R_ahZ\",\n\t\"gray99\": \"text__gray99--3WXxO\",\n\t\"gray66\": \"text__gray66--2BfMy\",\n\t\"m28\": \"text__m28--Q_LfZ\",\n\t\"m20\": \"text__m20--2kCEn\",\n\t\"m16\": \"text__m16--ID_eu\",\n\t\"m14\": \"text__m14--3YZst\",\n\t\"m12\": \"text__m12--2WgGh\",\n\t\"m10\": \"text__m10--YWjqv\",\n\t\"t28\": \"text__t28--LGCwl\",\n\t\"t20\": \"text__t20--3v02V\",\n\t\"t16\": \"text__t16--ZAaUf\",\n\t\"t14\": \"text__t14--1FHtG\",\n\t\"t12\": \"text__t12--1wP-2\",\n\t\"t10\": \"text__t10--3zBBS\",\n\t\"d28\": \"text__d28--1ArBo\",\n\t\"d20\": \"text__d20--2vm0n\",\n\t\"d16\": \"text__d16--3xxjv\",\n\t\"d14\": \"text__d14--H6fr_\",\n\t\"d12\": \"text__d12--3bR5l\",\n\t\"d10\": \"text__d10--1tkyV\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Text/text.less?");
+
+/***/ }),
+
+/***/ "classnames":
+/*!*****************************!*\
+  !*** external "classnames" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"classnames\");\n\n//# sourceURL=webpack:///external_%22classnames%22?");
 
 /***/ }),
 
