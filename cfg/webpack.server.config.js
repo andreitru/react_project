@@ -1,4 +1,6 @@
 // const { read } = require('fs');
+const {DefinePlugin} = require('webpack');
+
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
@@ -19,8 +21,8 @@ module.exports = {
   module: {
     rules: [
       {
-      test: /\.[tj]sx?$/,
-      use: ['ts-loader']
+        test: /\.[tj]sx?$/,
+        use: ['ts-loader']
       },
       {
         test: /\.less$/,
@@ -42,5 +44,6 @@ module.exports = {
   },
   optimization: {
     minimize: false,
-  }
+  },
+  plugins: [new DefinePlugin({'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'`})]
 };

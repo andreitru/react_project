@@ -7,6 +7,7 @@ import {CommentsIcon} from "./CommentsIcon";
 import {ShareIcon} from "./ShareIcon";
 import {SaveIcon} from "./SaveIcon";
 import {MenuIcon} from "./MenuIcon";
+import {IconAnon} from "./IconAnon";
 
 export enum EIcons {
   block = 'BlockIcon',
@@ -14,7 +15,8 @@ export enum EIcons {
   comments = 'CommentsIcon',
   share = 'ShareIcon',
   save = 'SaveIcon',
-  menu = 'MenuIcon'
+  menu = 'MenuIcon',
+  anon = 'IconAnon'
 }
 
 const icons = {
@@ -23,7 +25,8 @@ const icons = {
   CommentsIcon: <CommentsIcon/>,
   ShareIcon: <ShareIcon/>,
   SaveIcon: <SaveIcon/>,
-  MenuIcon: <MenuIcon/>
+  MenuIcon: <MenuIcon/>,
+  IconAnon: <IconAnon />
 }
 
 type TSizes = 28 | 20 | 16 | 14 | 12 | 10;
