@@ -3,6 +3,7 @@
   top: 17px;
   right: 15px;
   padding: 0;
+  z-index: 10;
 }
 
 .menuButton {
@@ -28,6 +29,7 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
   background-color: var(--white);
+  //z-index: 100;
 }
 
 .closeButton {
@@ -85,8 +87,10 @@ svg.down {
 @media all and (min-width: 1024px) {
   .menu {
     order: 2;
-    top: 60px;
+    top: 50%;
     right: 86px;
+    transform: translateY(-50%);
+
   }
 
   .menuButton {
