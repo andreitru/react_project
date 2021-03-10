@@ -17,7 +17,7 @@ interface IPost {
         banner_img: string
       },
       created_utc: number,
-      permalink: string
+      id: string
     }
   };
 }
@@ -31,12 +31,12 @@ export function Card({post}: IPost) {
     thumbnail,
     sr_detail,
     created_utc,
-    permalink
+    id
   } = post.data
 
   return (
     <li className={styles.card}>
-      <TextContent username={author} title={title} createDate={created_utc} link={permalink} icon={sr_detail}/>
+      <TextContent username={author} title={title} createDate={created_utc} postId={id} icon={sr_detail}/>
       <Preview thumbnail={thumbnail} banner={sr_detail}/>
       <Menu comments={num_comments} karmaValue={score}/>
     </li>

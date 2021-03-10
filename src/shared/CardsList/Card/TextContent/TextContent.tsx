@@ -1,18 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './textcontent.less';
 import {formatDate} from "../../../../utils/js/formatDate";
+import {Post} from "../../../Post";
 
 interface ITextContentProps {
   username: string;
   title: string;
   createDate: number;
-  link: string;
+  postId: string;
   icon: { icon_img: string };
 }
 
-export function TextContent({username, title, createDate, link, icon}: ITextContentProps) {
-  const postLink = `https://reddit.com${link}`;
-  const authorLink = `https://reddit.com/user/${username}`
+export function TextContent({username, title, createDate, postId, icon}: ITextContentProps) {
+  const [isModalOpened, setIsModalOpened] = useState(false);
+
+
+  const authorLink = `https://reddit.com/user/${username}`;
+
 
   return (
     <div className={styles.textContent}>
@@ -29,9 +33,16 @@ export function TextContent({username, title, createDate, link, icon}: ITextCont
           </span>
       </div>
       <h2 className={styles.title}>
-        <a href={postLink} target="_blank" className={styles.postLink}>
+        <a href="#post-url" className={styles.postLink} onClick={() => {setIsModalOpened(true)}}>
           {title}
         </a>
+
+        {isModalOpened && (
+          <Post
+            postId={postId}
+            onClose={() => {setIsModalOpened(false);}}
+          />
+        )}
       </h2>
     </div>
   );

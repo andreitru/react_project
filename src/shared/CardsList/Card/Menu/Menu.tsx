@@ -8,29 +8,54 @@ import {EColor, Text} from "../../../Text";
 interface IComments {
   comments: number;
   karmaValue: number;
+  isOpen?: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
 }
 
-export function Menu({comments, karmaValue}: IComments) {
+const NOOP = () => {
+};
+
+export function Menu({comments, karmaValue, isOpen, onOpen = NOOP, onClose = NOOP,}: IComments) {
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
+  const [coords, setCoords] = React.useState({})
+  React.useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
+  React.useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen]);
+
+  const handleOpen = (event: any) => {
+    if (event.target instanceof HTMLElement && isOpen === undefined) {
+      setIsDropdownOpen(!isDropdownOpen)
+      const rect = event.target.getBoundingClientRect();
+      setCoords({
+        left: rect.left + pageXOffset,
+        top: rect.top + pageYOffset
+      })
+    }
+  }
+
   return (
     <>
       <div className={styles.menu}>
-        <Dropdown
-          onClose={() => console.log('closed')}
-          onOpen={() => console.log('opened')}
-          button={
-            <button className={styles.menuButton}>
-              {/*<MenuIcon/>*/}
-              <Icon name={EIcons.menu}/>
-            </button>}>
-          <div className={styles.dropdown}>
-            <MenuItemsList postId='1234'/>
-            <button className={styles.closeButton}>
-              <Text mobileSize={12} size={14} color={EColor.gray66}>
-                Закрыть
-              </Text>
-            </button>
-          </div>
-        </Dropdown>
+        <button className={styles.menuButton} onClick={handleOpen}>
+          <Icon name={EIcons.menu}/>
+        </button>
+        {isDropdownOpen && (
+          <Dropdown
+            onClose={() => console.log('closed')}
+            onOpen={() => console.log('opened')}
+            coords={coords}
+            setIsDropdownOpen={setIsDropdownOpen}
+          >
+            <div className={styles.dropdown}>
+              <MenuItemsList postId='1234'/>
+              <button className={styles.closeButton}>
+                <Text mobileSize={12} size={14} color={EColor.gray66}>
+                  Закрыть
+                </Text>
+              </button>
+            </div>
+          </Dropdown>
+        )}
       </div>
 
       <div className={styles.controls}>

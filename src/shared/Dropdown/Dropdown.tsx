@@ -1,39 +1,32 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import styles from './dropdown.less';
 
 interface IDropdownProps {
-  button: React.ReactNode;
   children: React.ReactNode;
-  isOpen?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
+  setIsDropdownOpen?: any;
+  coords?: any;
+  isDropdownOpen?: boolean
 }
 
-const NOOP = ()  => {};
+export function Dropdown({children, coords, setIsDropdownOpen, isDropdownOpen}: IDropdownProps) {
 
-export function Dropdown({ button, children, isOpen, onOpen = NOOP, onClose = NOOP }: IDropdownProps) {
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
-  React.useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
-  React.useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen]);
+  const node = document.querySelector('#dropdown_root');
+  if (!node) return null;
 
-  const handleOpen = () => {
-    if (isOpen === undefined) {
-      setIsDropdownOpen(!isDropdownOpen)
-    }
-  }
-
-  return (
-    <div className={styles.container}>
-      <div onClick={handleOpen}>
-        { button }
-      </div>
-      {isDropdownOpen && (
-        <div className={styles.listContainer}>
-          <div className={styles.list} onClick={() => setIsDropdownOpen(false)}>
-            {children}
-          </div>
+  return ReactDOM.createPortal((
+    <div className={styles.container}
+         style={{
+           left: `${coords.left}px`,
+           top: `${coords.top}px`
+         }}>
+      <div className={styles.listContainer}>
+        <div className={styles.list} onClick={() => setIsDropdownOpen(isDropdownOpen)}>
+          {children}
         </div>
-      )}
+      </div>
     </div>
-  );
+  ), node);
 }
