@@ -1,5 +1,4 @@
 import React from "react";
-// import styles from "./commentslist.less";
 import {Comment} from './Comment';
 import {generateRandomString} from "../../utils/react/generateRandomIndex";
 

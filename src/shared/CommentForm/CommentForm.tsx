@@ -1,24 +1,19 @@
-import React, {ChangeEvent, FormEvent, useContext} from 'react';
+import React, {ChangeEvent, FormEvent} from 'react';
 import styles from './commentform.less';
-import {commentContext} from "../context/commentContext";
-import {userContext} from "../context/userContext";
 
-export function CommentForm() {
-  const {value, onChange} = useContext(commentContext);
-  const userName = useContext(userContext);
+type Props = {
+  value: string;
+  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+  onSubmit: (event: FormEvent) => void;
+}
 
-  function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
-    onChange(event.target.value);
-  }
-
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-    console.log(value);
-  }
+export function CommentForm({value, onChange, onSubmit}: Props) {
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <textarea className={styles.input} value={value} onChange={handleChange} placeholder={`${userName.name}, оставьте ваш комментарий`}/>
+    <form className={styles.form} onSubmit={onSubmit}>
+      <textarea className={styles.input} value={value} onChange={onChange}
+        // placeholder={`${userName.name}, оставьте ваш комментарий`}
+      />
       <button className={styles.button} type='submit'>Комментировать</button>
     </form>
   )

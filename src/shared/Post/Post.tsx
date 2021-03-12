@@ -1,10 +1,11 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import styles from './post.less';
-import {CommentForm} from "../CommentForm";
 import axios from "axios";
-import {tokenContext} from "../context/tokenContext";
-import { CommentsList } from '../CommentsList';
+import {CommentsList} from '../CommentsList';
+import {CommentFormContainer} from "../CommentFormContainer";
+import {useSelector} from "react-redux";
+import {RootState} from "../../store";
 
 interface IPost {
   title?: string;
@@ -22,7 +23,7 @@ interface IComments {
 export function Post(props: IPost) {
   const [postData, setPostData] = useState<IPost>({title: '', selftext: '', url: ''});
   const [comments, setComments] = useState<IComments>({})
-  const token = useContext(tokenContext);
+  const token = useSelector<RootState, string>(state => state.token);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,8 +46,6 @@ export function Post(props: IPost) {
     })
       .then((resp) => {
         const post = resp.data;
-        console.log(post[0].data.children[0].data)
-        console.log(post[1].data.children)
         setPostData(post[0].data.children[0].data)
         setComments(post[1].data.children)
       })
@@ -66,7 +65,7 @@ export function Post(props: IPost) {
         {/jpg|png$/.test(postData.url as string) ? <img src={postData.url} alt='' className={styles.img}/> : null}
       </div>
 
-      <CommentForm/>
+      <CommentFormContainer/>
       <CommentsList comments={comments}/>
     </div>
   ), node);
