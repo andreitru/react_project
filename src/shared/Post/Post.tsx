@@ -5,7 +5,7 @@ import axios from "axios";
 import {CommentsList} from '../CommentsList';
 import {CommentFormContainer} from "../CommentFormContainer";
 import {useSelector} from "react-redux";
-import {RootState} from "../../store";
+import {RootState} from "../../store/reducer";
 
 interface IPost {
   title?: string;
@@ -23,7 +23,7 @@ interface IComments {
 export function Post(props: IPost) {
   const [postData, setPostData] = useState<IPost>({title: '', selftext: '', url: ''});
   const [comments, setComments] = useState<IComments>({})
-  const token = useSelector<RootState, string>(state => state.token);
+  const token = useSelector<RootState, string>(state => state.token.token);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

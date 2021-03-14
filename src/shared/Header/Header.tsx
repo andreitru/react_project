@@ -4,15 +4,12 @@ import {SearchBlock} from "./SearchBlock";
 import {ThreadTitle} from "./ThreadTitle";
 import {SortBlock} from "./SortBlock";
 import {useDispatch} from "react-redux";
-import {setToken} from "../../store";
+import {saveToken} from "../../store/token/actions";
 
 export function Header() {
   const dispatch = useDispatch();
-
   useEffect(() => {
-    if (window.__token__ !== 'undefined') {
-      dispatch(setToken(window.__token__))
-    }
+    dispatch(saveToken())
   }, [])
 
   return (
