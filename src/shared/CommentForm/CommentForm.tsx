@@ -1,20 +1,32 @@
-import React, {ChangeEvent, FormEvent} from 'react';
+import React from 'react';
 import styles from './commentform.less';
 
-type Props = {
-  value: string;
-  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-  onSubmit: (event: FormEvent) => void;
-}
+import {Formik, Field, Form} from 'formik';
 
-export function CommentForm({value, onChange, onSubmit}: Props) {
+export function CommentForm() {
+
+  function validateValue(value: string) {
+    let error;
+    if (value.length <= 3) {
+      error = 'Введите больше 3-х символов'
+    }
+    return error;
+  }
 
   return (
-    <form className={styles.form} onSubmit={onSubmit}>
-      <textarea className={styles.input} value={value} onChange={onChange}
-        // placeholder={`${userName.name}, оставьте ваш комментарий`}
-      />
-      <button className={styles.button} type='submit'>Комментировать</button>
-    </form>
+    <Formik
+      initialValues={{
+        comment: '',
+      }}
+      onSubmit={(value) => alert(`Комментарий "${value.comment}" отправлен`)}
+    >
+      {({errors, touched}) => (
+        <Form className={styles.form}>
+          <Field className={styles.input} as="textarea" name="comment" validate={validateValue}/>
+          {errors.comment && touched.comment && <div>{errors.comment}</div>}
+          <button type="submit" className={styles.button}>Комментировать</button>
+        </Form>
+      )}
+    </Formik>
   )
 }
