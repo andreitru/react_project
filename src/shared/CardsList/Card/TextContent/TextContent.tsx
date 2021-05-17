@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styles from './textcontent.less';
 import {formatDate} from "../../../../utils/js/formatDate";
 import {Post} from "../../../Post";
+import { Link } from 'react-router-dom';
 
 interface ITextContentProps {
   username: string;
@@ -12,7 +13,7 @@ interface ITextContentProps {
 }
 
 export function TextContent({username, title, createDate, postId, icon}: ITextContentProps) {
-  const [isModalOpened, setIsModalOpened] = useState(false);
+  // const [isModalOpened, setIsModalOpened] = useState(false);
 
 
   const authorLink = `https://reddit.com/user/${username}`;
@@ -33,16 +34,9 @@ export function TextContent({username, title, createDate, postId, icon}: ITextCo
           </span>
       </div>
       <h2 className={styles.title}>
-        <a href="#post-url" className={styles.postLink} onClick={() => {setIsModalOpened(true)}}>
+        <Link to={`/posts/${postId}`} className={styles.postLink}>
           {title}
-        </a>
-
-        {isModalOpened && (
-          <Post
-            postId={postId}
-            onClose={() => {setIsModalOpened(false);}}
-          />
-        )}
+        </Link>
       </h2>
     </div>
   );

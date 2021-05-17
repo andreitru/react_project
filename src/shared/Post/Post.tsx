@@ -6,12 +6,13 @@ import {CommentsList} from '../CommentsList';
 import {CommentFormContainer} from "../CommentFormContainer";
 import {useSelector} from "react-redux";
 import {RootState} from "../../store/reducer";
+import { useHistory } from 'react-router-dom';
 
 interface IPost {
   title?: string;
   selftext?: string;
   url?: string;
-  onClose?: () => void;
+  // onClose?: () => void;
   postData?: any;
   postId?: string
 }
@@ -25,11 +26,12 @@ export function Post(props: IPost) {
   const [comments, setComments] = useState<IComments>({})
   const token = useSelector<RootState, string>(state => state.token.token);
   const ref = useRef<HTMLDivElement>(null);
+  const history = useHistory();
 
   useEffect(() => {
     function handleClick(event: MouseEvent) {
       if (event.target instanceof Node && !ref.current?.contains(event.target)) {
-        props.onClose?.();
+        history.push('/posts');
       }
     }
 
@@ -41,7 +43,9 @@ export function Post(props: IPost) {
   }, [])
 
   useEffect(() => {
-    axios.get(`https://oauth.reddit.com/comments/${props.postId}.json?sr_detail=true&limit=20`, {
+    const id = document.location.href.split('/posts/')[1];
+
+    axios.get(`https://oauth.reddit.com/comments/${id}.json?sr_detail=true&limit=20`, {
       headers: {Authorization: `bearer ${token}`}
     })
       .then((resp) => {

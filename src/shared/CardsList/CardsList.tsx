@@ -15,7 +15,6 @@ export function CardsList() {
   const bottomOfList = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    console.log('counter', counter)
       async function load() {
         setLoading(true)
         setErrorLoading('')
@@ -42,7 +41,6 @@ export function CardsList() {
           if (counter < 2) {
             load()
             setCounter(counter + 1)
-            console.log('if', counter)
           } else {
             setMore(true)
           }

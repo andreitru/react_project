@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './main.global.less';
 import {hot} from 'react-hot-loader/root';
 import {Layout} from './shared/Layout';
@@ -12,24 +12,50 @@ import {Provider} from "react-redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {rootReducer} from "./store/reducer";
 import thunk from "redux-thunk";
+import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
+import {Post} from "./shared/Post";
 
 const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(thunk),
 ));
 
 function AppComponent() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <Provider store={store}>
-      <UserContextProvider>
-        <Layout>
-          <Header/>
-          <Content>
-            <PostsContextProvider>
-              <CardsList/>
-            </PostsContextProvider>
-          </Content>
-        </Layout>
-      </UserContextProvider>
+      {mounted && (
+        <BrowserRouter>
+          <UserContextProvider>
+            <Layout>
+              <Header/>
+              <Content>
+                <PostsContextProvider>
+                  <Switch>
+                    <Redirect exact from="/" to="/posts"/>
+                    <Redirect from="/auth" to="/posts"/>
+                    <Route path="/posts">
+                      <CardsList/>
+                      <Route path="/posts/:id">
+                        <Post/>
+                      </Route>
+                    </Route>
+                    <Route path="*" exact={true}>
+                      <h1 style={{textAlign: 'center', padding: '50px 0'}}>
+                        404 - страница не найдена
+                      </h1>
+                    </Route>
+                  </Switch>
+                </PostsContextProvider>
+              </Content>
+            </Layout>
+          </UserContextProvider>
+        </BrowserRouter>
+      )}
     </Provider>
   );
 }
