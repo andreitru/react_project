@@ -1,0 +1,13 @@
+[1mdiff --git a/dist/client/client.js b/dist/client/client.js[m
+[1mindex 9de025e..d559da4 100644[m
+[1m--- a/dist/client/client.js[m
+[1m+++ b/dist/client/client.js[m
+[36m@@ -63,7 +63,7 @@[m
+ /******/[m
+ /******/ 	var hotApplyOnUpdate = true;[m
+ /******/ 	// eslint-disable-next-line no-unused-vars[m
+[31m-/******/ 	var hotCurrentHash = "a0ca6a044b0a08452ba4";[m
+[32m+[m[32m/******/ 	var hotCurrentHash = "bb2d82535759fceae0d6";[m
+ /******/ 	var hotRequestTimeout = 10000;[m
+ /******/ 	var hotCurrentModuleData = {};[m
+ /******/ 	var hotCurrentChildModule;[m

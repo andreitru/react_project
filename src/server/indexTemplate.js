@@ -7,7 +7,7 @@ export const indexTemplate = (content, token) => `
   <title>Reddit for me</title>
   <script src="/static/client.js" type="application/javascript"></script>
   <script>
-    window.__token__ = '${token}'
+    window.__token__ = ${token}
   </script>
 </head>
 <body>
