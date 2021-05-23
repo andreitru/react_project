@@ -141,7 +141,7 @@ eval("// Exports\nmodule.exports = {};\n\n\n//# sourceURL=webpack:///./src/main.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.indexTemplate = void 0;\nvar indexTemplate = function (content, token) { return \"\\n<!DOCTYPE html>\\n<html lang=\\\"en\\\">\\n<head>\\n  <meta charset=\\\"UTF-8\\\">\\n  <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\">\\n  <title>Reddit for me</title>\\n  <script src=\\\"/static/client.js\\\" type=\\\"application/javascript\\\"></script>\\n  <script>\\n    window.__token__ = \" + token + \"\\n  </script>\\n</head>\\n<body>\\n  <div id=\\\"react_root\\\">\" + content + \"</div>\\n  <div id=\\\"modal_root\\\"></div>\\n  <div id=\\\"dropdown_root\\\"></div>\\n</body>\\n</html>\\n\"; };\nexports.indexTemplate = indexTemplate;\n\n\n//# sourceURL=webpack:///./src/server/indexTemplate.js?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.indexTemplate = void 0;\nvar indexTemplate = function (content, token) { return \"\\n<!DOCTYPE html>\\n<html lang=\\\"en\\\">\\n<head>\\n  <meta charset=\\\"UTF-8\\\">\\n  <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\">\\n  <title>Reddit for me</title>\\n  <script src=\\\"/static/client.js\\\" type=\\\"application/javascript\\\"></script>\\n  <script>\\n    window.__token__ = '\" + token + \"'\\n  </script>\\n</head>\\n<body>\\n  <div id=\\\"react_root\\\">\" + content + \"</div>\\n  <div id=\\\"modal_root\\\"></div>\\n  <div id=\\\"dropdown_root\\\"></div>\\n</body>\\n</html>\\n\"; };\nexports.indexTemplate = indexTemplate;\n\n\n//# sourceURL=webpack:///./src/server/indexTemplate.js?");
 
 /***/ }),
 
@@ -1057,7 +1057,7 @@ eval("\nvar __assign = (this && this.__assign) || function () {\n    __assign = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.saveToken = exports.setToken = exports.SET_TOKEN = void 0;\nexports.SET_TOKEN = 'SET_TOKEN';\nvar setToken = function (token) { return ({\n    type: exports.SET_TOKEN,\n    token: token,\n}); };\nexports.setToken = setToken;\nvar saveToken = function () { return function (dispatch) {\n    var token = localStorage.getItem('token') || window.__token__;\n    dispatch(exports.setToken(token));\n    if (token !== 'undefined') {\n        localStorage.setItem('token', token);\n    }\n}; };\nexports.saveToken = saveToken;\n\n\n//# sourceURL=webpack:///./src/store/token/actions.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.saveToken = exports.setToken = exports.SET_TOKEN = void 0;\nexports.SET_TOKEN = 'SET_TOKEN';\nvar setToken = function (token) { return ({\n    type: exports.SET_TOKEN,\n    token: token,\n}); };\nexports.setToken = setToken;\nvar saveToken = function () { return function (dispatch) {\n    var token = '';\n    if (localStorage.getItem('token') && localStorage.getItem('token') !== \"undefined\") {\n        token = localStorage.getItem('token');\n    }\n    else {\n        token = window.__token__;\n    }\n    dispatch(exports.setToken(token));\n    if (token !== 'undefined') {\n        if (typeof token === \"string\") {\n            localStorage.setItem('token', token);\n        }\n    }\n}; };\nexports.saveToken = saveToken;\n\n\n//# sourceURL=webpack:///./src/store/token/actions.ts?");
 
 /***/ }),
 

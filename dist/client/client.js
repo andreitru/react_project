@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "bb2d82535759fceae0d6";
+/******/ 	var hotCurrentHash = "5f4198835631a87aa5e7";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -4855,7 +4855,7 @@ eval("\nvar __assign = (this && this.__assign) || function () {\n    __assign = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.saveToken = exports.setToken = exports.SET_TOKEN = void 0;\nexports.SET_TOKEN = 'SET_TOKEN';\nvar setToken = function (token) { return ({\n    type: exports.SET_TOKEN,\n    token: token,\n}); };\nexports.setToken = setToken;\nvar saveToken = function () { return function (dispatch) {\n    var token = localStorage.getItem('token') || window.__token__;\n    dispatch(exports.setToken(token));\n    if (token !== 'undefined') {\n        localStorage.setItem('token', token);\n    }\n}; };\nexports.saveToken = saveToken;\n\n\n//# sourceURL=webpack:///./src/store/token/actions.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.saveToken = exports.setToken = exports.SET_TOKEN = void 0;\nexports.SET_TOKEN = 'SET_TOKEN';\nvar setToken = function (token) { return ({\n    type: exports.SET_TOKEN,\n    token: token,\n}); };\nexports.setToken = setToken;\nvar saveToken = function () { return function (dispatch) {\n    var token = '';\n    if (localStorage.getItem('token') && localStorage.getItem('token') !== \"undefined\") {\n        token = localStorage.getItem('token');\n    }\n    else {\n        token = window.__token__;\n    }\n    dispatch(exports.setToken(token));\n    if (token !== 'undefined') {\n        if (typeof token === \"string\") {\n            localStorage.setItem('token', token);\n        }\n    }\n}; };\nexports.saveToken = saveToken;\n\n\n//# sourceURL=webpack:///./src/store/token/actions.ts?");
 
 /***/ }),
 
