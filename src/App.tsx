@@ -37,7 +37,7 @@ function AppComponent() {
                 <PostsContextProvider>
                   <Switch>
                     <Redirect exact from="/" to="/posts"/>
-                    <Redirect from="/auth" to="/posts"/>
+                    <Redirect exact from="/auth" to="/posts"/>
                     <Route path="/posts">
                       <CardsList/>
                       <Route path="/posts/:id">
