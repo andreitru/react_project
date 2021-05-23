@@ -24,7 +24,8 @@ interface IComments {
 export function Post(props: IPost) {
   const [postData, setPostData] = useState<IPost>({title: '', selftext: '', url: ''});
   const [comments, setComments] = useState<IComments>({})
-  const token = useSelector<RootState, string>(state => state.token.token);
+  // const token = useSelector<RootState, string>(state => state.token.token);
+  const token = localStorage.getItem('token')
   const ref = useRef<HTMLDivElement>(null);
   const history = useHistory();
 
@@ -44,6 +45,7 @@ export function Post(props: IPost) {
 
   useEffect(() => {
     const id = document.location.href.split('/posts/')[1];
+    console.log("token", token)
 
     axios.get(`https://oauth.reddit.com/comments/${id}.json?sr_detail=true&limit=20`, {
       headers: {Authorization: `bearer ${token}`}
