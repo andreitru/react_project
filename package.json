@@ -11,7 +11,7 @@
     "build": "env NODE_ENV=production webpack --config webpack.config.js",
     "dev": "env NODE_ENV=development CLIENT_ID=J33HZq43yS9ocA SECRET=ndPh5uNumEC5iLdv2QTQ7HUDtQ4gYQ node ./bin/dev.js",
     "test": "jest",
-    "start": "env NODE_ENV=production CLIENT_ID=Bj8IZj5IctrFXA SECRET=LnkZSxu1-g23nO2XSDWWheF3j8LiLg node ./dist/server/server.js"
+    "start": "env node ./dist/server/server.js"
   },
   "repository": {
     "type": "git",
