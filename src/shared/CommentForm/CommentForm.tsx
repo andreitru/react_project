@@ -1,32 +1,42 @@
-import React from 'react';
+import React, {ChangeEvent, FormEvent, useState} from 'react';
 import styles from './commentform.less';
-
-import {Formik, Field, Form} from 'formik';
+import {useStoreon} from "storeon/react";
 
 export function CommentForm() {
+  const {dispatch, comment} = useStoreon('comment')
+  const [touched, setTouched] = useState(false);
+  const [valueError, setValueError] = useState('');
 
   function validateValue(value: string) {
-    let error;
-    if (value.length <= 3) {
-      error = 'Введите больше 3-х символов'
-    }
-    return error;
+    if (value.length <= 3) return 'Введите больше 3-х символов';
+    return '';
   }
 
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    setTouched(true);
+    setValueError(validateValue(comment));
+
+    const isFormValid = !validateValue(comment);
+    if (!isFormValid) return;
+
+    alert(comment);
+    dispatch('@init');
+  }
+
+    function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
+      dispatch('setComment', event.target.value)
+    }
+
   return (
-    <Formik
-      initialValues={{
-        comment: '',
-      }}
-      onSubmit={(value) => alert(`Комментарий "${value.comment}" отправлен`)}
-    >
-      {({errors, touched}) => (
-        <Form className={styles.form}>
-          <Field className={styles.input} as="textarea" name="comment" validate={validateValue}/>
-          {errors.comment && touched.comment && <div>{errors.comment}</div>}
-          <button type="submit" className={styles.button}>Комментировать</button>
-        </Form>
-      )}
-    </Formik>
+      <form className={styles.form} onSubmit={handleSubmit}>
+      <textarea
+        className={styles.input}
+        value={comment}
+        onChange={handleChange}
+      />
+        {touched && valueError && (<div>{valueError}</div>)}
+        <button type="submit" className={styles.button}>Комментировать</button>
+      </form>
   )
 }

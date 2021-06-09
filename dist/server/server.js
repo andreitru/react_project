@@ -153,7 +153,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexport
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar express_1 = __importDefault(__webpack_require__(/*! express */ \"express\"));\nvar server_1 = __importDefault(__webpack_require__(/*! react-dom/server */ \"react-dom/server\"));\nvar App_1 = __webpack_require__(/*! ../App */ \"./src/App.tsx\");\nvar indexTemplate_1 = __webpack_require__(/*! ./indexTemplate */ \"./src/server/indexTemplate.js\");\nvar axios_1 = __importDefault(__webpack_require__(/*! axios */ \"axios\"));\nvar compression_1 = __importDefault(__webpack_require__(/*! compression */ \"compression\"));\nvar helmet_1 = __importDefault(__webpack_require__(/*! helmet */ \"helmet\"));\nvar PORT = process.env.PORT || 3000;\nvar IS_DEV = \"development\" !== 'production';\nvar app = express_1.default();\nif (!IS_DEV) {\n    app.use(compression_1.default());\n    app.use(helmet_1.default({\n        contentSecurityPolicy: false\n    }));\n}\napp.use('/static', express_1.default.static('./dist/client'));\napp.get('/auth', function (req, res) {\n    axios_1.default.post('https://www.reddit.com/api/v1/access_token', \"grant_type=authorization_code&code=\" + req.query.code + \"&redirect_uri=https://react-skillbox.herokuapp.com/auth\", {\n        auth: { username: 'J33HZq43yS9ocA', password: process.env.SECRET },\n        headers: { 'Content-type': 'application/x-www-form-urlencoded' }\n    })\n        .then(function (_a) {\n        var data = _a.data;\n        res.send(indexTemplate_1.indexTemplate(server_1.default.renderToString(App_1.App()), data['access_token']));\n    })\n        .catch(console.log);\n});\napp.get('*', function (req, res) {\n    res.send(indexTemplate_1.indexTemplate(server_1.default.renderToString(App_1.App())));\n});\napp.listen(PORT, function () {\n    console.log(\"Server started on http://localhost:\" + PORT);\n});\n\n\n//# sourceURL=webpack:///./src/server/server.js?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar express_1 = __importDefault(__webpack_require__(/*! express */ \"express\"));\nvar server_1 = __importDefault(__webpack_require__(/*! react-dom/server */ \"react-dom/server\"));\nvar App_1 = __webpack_require__(/*! ../App */ \"./src/App.tsx\");\nvar indexTemplate_1 = __webpack_require__(/*! ./indexTemplate */ \"./src/server/indexTemplate.js\");\nvar axios_1 = __importDefault(__webpack_require__(/*! axios */ \"axios\"));\nvar compression_1 = __importDefault(__webpack_require__(/*! compression */ \"compression\"));\nvar helmet_1 = __importDefault(__webpack_require__(/*! helmet */ \"helmet\"));\nvar PORT = process.env.PORT || 3000;\nvar IS_DEV = \"development\" !== 'production';\nvar app = express_1.default();\nif (!IS_DEV) {\n    app.use(compression_1.default());\n    app.use(helmet_1.default({\n        contentSecurityPolicy: false\n    }));\n}\napp.use('/static', express_1.default.static('./dist/client'));\napp.get('/auth', function (req, res) {\n    axios_1.default.post('https://www.reddit.com/api/v1/access_token', \"grant_type=authorization_code&code=\" + req.query.code + \"&redirect_uri=http://localhost:3000/auth\", {\n        auth: { username: 'J33HZq43yS9ocA', password: process.env.SECRET },\n        headers: { 'Content-type': 'application/x-www-form-urlencoded' }\n    })\n        .then(function (_a) {\n        var data = _a.data;\n        res.send(indexTemplate_1.indexTemplate(server_1.default.renderToString(App_1.App()), data['access_token']));\n    })\n        .catch(console.log);\n});\napp.get('*', function (req, res) {\n    res.send(indexTemplate_1.indexTemplate(server_1.default.renderToString(App_1.App())));\n});\napp.listen(PORT, function () {\n    console.log(\"Server started on http://localhost:\" + PORT);\n});\n\n\n//# sourceURL=webpack:///./src/server/server.js?");
 
 /***/ }),
 
@@ -410,7 +410,7 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.CommentForm = void 0;\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nvar commentform_less_1 = __importDefault(__webpack_require__(/*! ./commentform.less */ \"./src/shared/CommentForm/commentform.less\"));\nvar formik_1 = __webpack_require__(/*! formik */ \"formik\");\nfunction CommentForm() {\n    function validateValue(value) {\n        var error;\n        if (value.length <= 3) {\n            error = 'Введите больше 3-х символов';\n        }\n        return error;\n    }\n    return (react_1.default.createElement(formik_1.Formik, { initialValues: {\n            comment: '',\n        }, onSubmit: function (value) { return alert(\"\\u041A\\u043E\\u043C\\u043C\\u0435\\u043D\\u0442\\u0430\\u0440\\u0438\\u0439 \\\"\" + value.comment + \"\\\" \\u043E\\u0442\\u043F\\u0440\\u0430\\u0432\\u043B\\u0435\\u043D\"); } }, function (_a) {\n        var errors = _a.errors, touched = _a.touched;\n        return (react_1.default.createElement(formik_1.Form, { className: commentform_less_1.default.form },\n            react_1.default.createElement(formik_1.Field, { className: commentform_less_1.default.input, as: \"textarea\", name: \"comment\", validate: validateValue }),\n            errors.comment && touched.comment && react_1.default.createElement(\"div\", null, errors.comment),\n            react_1.default.createElement(\"button\", { type: \"submit\", className: commentform_less_1.default.button }, \"\\u041A\\u043E\\u043C\\u043C\\u0435\\u043D\\u0442\\u0438\\u0440\\u043E\\u0432\\u0430\\u0442\\u044C\")));\n    }));\n}\nexports.CommentForm = CommentForm;\n\n\n//# sourceURL=webpack:///./src/shared/CommentForm/CommentForm.tsx?");
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\n}) : function(o, v) {\n    o[\"default\"] = v;\n});\nvar __importStar = (this && this.__importStar) || function (mod) {\n    if (mod && mod.__esModule) return mod;\n    var result = {};\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\n    __setModuleDefault(result, mod);\n    return result;\n};\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.CommentForm = void 0;\nvar react_1 = __importStar(__webpack_require__(/*! react */ \"react\"));\nvar commentform_less_1 = __importDefault(__webpack_require__(/*! ./commentform.less */ \"./src/shared/CommentForm/commentform.less\"));\nvar react_2 = __webpack_require__(/*! storeon/react */ \"storeon/react\");\nfunction CommentForm() {\n    var _a = react_2.useStoreon('comment'), dispatch = _a.dispatch, comment = _a.comment;\n    var _b = react_1.useState(false), touched = _b[0], setTouched = _b[1];\n    var _c = react_1.useState(''), valueError = _c[0], setValueError = _c[1];\n    function validateValue(value) {\n        if (value.length <= 3)\n            return 'Введите больше 3-х символов';\n        return '';\n    }\n    function handleSubmit(e) {\n        e.preventDefault();\n        setTouched(true);\n        setValueError(validateValue(comment));\n        var isFormValid = !validateValue(comment);\n        if (!isFormValid)\n            return;\n        alert(comment);\n        dispatch('@init');\n    }\n    function handleChange(event) {\n        dispatch('setComment', event.target.value);\n    }\n    return (react_1.default.createElement(\"form\", { className: commentform_less_1.default.form, onSubmit: handleSubmit },\n        react_1.default.createElement(\"textarea\", { className: commentform_less_1.default.input, value: comment, onChange: handleChange }),\n        touched && valueError && (react_1.default.createElement(\"div\", null, valueError)),\n        react_1.default.createElement(\"button\", { type: \"submit\", className: commentform_less_1.default.button }, \"\\u041A\\u043E\\u043C\\u043C\\u0435\\u043D\\u0442\\u0438\\u0440\\u043E\\u0432\\u0430\\u0442\\u044C\")));\n}\nexports.CommentForm = CommentForm;\n\n\n//# sourceURL=webpack:///./src/shared/CommentForm/CommentForm.tsx?");
 
 /***/ }),
 
@@ -445,7 +445,7 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.CommentFormContainer = void 0;\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nvar react_redux_1 = __webpack_require__(/*! react-redux */ \"react-redux\");\nvar reducer_1 = __webpack_require__(/*! ../../store/reducer */ \"./src/store/reducer.ts\");\nvar CommentForm_1 = __webpack_require__(/*! ../CommentForm */ \"./src/shared/CommentForm/index.ts\");\nfunction CommentFormContainer() {\n    var value = react_redux_1.useSelector(function (state) { return state.commentText; });\n    var dispatch = react_redux_1.useDispatch();\n    function handleChange(event) {\n        dispatch(reducer_1.updateComment(event.target.value));\n    }\n    function handleSubmit(event) {\n        event.preventDefault();\n        console.log(value);\n    }\n    return (react_1.default.createElement(CommentForm_1.CommentForm\n    // value={value}\n    // onChange={handleChange}\n    // onSubmit={handleSubmit}\n    , null));\n}\nexports.CommentFormContainer = CommentFormContainer;\n\n\n//# sourceURL=webpack:///./src/shared/CommentFormContainer/CommentFormContainer.tsx?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.CommentFormContainer = void 0;\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nvar react_2 = __webpack_require__(/*! storeon/react */ \"storeon/react\");\nvar commentStore_1 = __webpack_require__(/*! ../../store/commentStore */ \"./src/store/commentStore.ts\");\nvar CommentForm_1 = __webpack_require__(/*! ../CommentForm */ \"./src/shared/CommentForm/index.ts\");\nfunction CommentFormContainer() {\n    return (react_1.default.createElement(react_2.StoreContext.Provider, { value: commentStore_1.store },\n        react_1.default.createElement(CommentForm_1.CommentForm, null)));\n}\nexports.CommentFormContainer = CommentFormContainer;\n\n\n//# sourceURL=webpack:///./src/shared/CommentFormContainer/CommentFormContainer.tsx?");
 
 /***/ }),
 
@@ -622,7 +622,7 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.UserBLock = void 0;\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nvar userblock_less_1 = __importDefault(__webpack_require__(/*! ./userblock.less */ \"./src/shared/Header/SearchBlock/UserBlock/userblock.less\"));\nvar Text_1 = __webpack_require__(/*! ../../../Text */ \"./src/shared/Text/index.ts\");\nvar Break_1 = __webpack_require__(/*! ../../../Break */ \"./src/shared/Break/index.ts\");\nvar Icons_1 = __webpack_require__(/*! ../../../Icons */ \"./src/shared/Icons/index.ts\");\nfunction UserBLock(_a) {\n    var avatarSrc = _a.avatarSrc, username = _a.username, loading = _a.loading;\n    return (react_1.default.createElement(\"a\", { href: \"https://www.reddit.com/api/v1/authorize?client_id=Bj8IZj5IctrFXA&response_type=code&state=random_string&redirect_uri=https://react-skillbox.herokuapp.com/auth&duration=permanent&scope=read submit identity\", className: userblock_less_1.default.userBox },\n        react_1.default.createElement(\"div\", { className: userblock_less_1.default.userBox },\n            react_1.default.createElement(\"div\", { className: userblock_less_1.default.avatarBox }, avatarSrc\n                ? react_1.default.createElement(\"img\", { src: avatarSrc, alt: \"user avatar\", className: userblock_less_1.default.avatarImage })\n                : react_1.default.createElement(Icons_1.IconAnon, null)),\n            react_1.default.createElement(\"div\", { className: userblock_less_1.default.username },\n                react_1.default.createElement(Break_1.Break, { size: 12 }),\n                loading ? (react_1.default.createElement(Text_1.Text, { size: 20, color: Text_1.EColor.gray99 }, \"\\u0417\\u0430\\u0433\\u0440\\u0443\\u0437\\u043A\\u0430...\")) : (react_1.default.createElement(Text_1.Text, { size: 20, color: username ? Text_1.EColor.black : Text_1.EColor.gray99 }, username || 'Аноним'))))));\n}\nexports.UserBLock = UserBLock;\n\n\n//# sourceURL=webpack:///./src/shared/Header/SearchBlock/UserBlock/UserBlock.tsx?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.UserBLock = void 0;\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\nvar userblock_less_1 = __importDefault(__webpack_require__(/*! ./userblock.less */ \"./src/shared/Header/SearchBlock/UserBlock/userblock.less\"));\nvar Text_1 = __webpack_require__(/*! ../../../Text */ \"./src/shared/Text/index.ts\");\nvar Break_1 = __webpack_require__(/*! ../../../Break */ \"./src/shared/Break/index.ts\");\nvar Icons_1 = __webpack_require__(/*! ../../../Icons */ \"./src/shared/Icons/index.ts\");\nfunction UserBLock(_a) {\n    var avatarSrc = _a.avatarSrc, username = _a.username, loading = _a.loading;\n    return (react_1.default.createElement(\"a\", { href: \"https://www.reddit.com/api/v1/authorize?client_id=J33HZq43yS9ocA&response_type=code&state=random_string&redirect_uri=http://localhost:3000/auth&duration=permanent&scope=read submit identity\", className: userblock_less_1.default.userBox },\n        react_1.default.createElement(\"div\", { className: userblock_less_1.default.userBox },\n            react_1.default.createElement(\"div\", { className: userblock_less_1.default.avatarBox }, avatarSrc\n                ? react_1.default.createElement(\"img\", { src: avatarSrc, alt: \"user avatar\", className: userblock_less_1.default.avatarImage })\n                : react_1.default.createElement(Icons_1.IconAnon, null)),\n            react_1.default.createElement(\"div\", { className: userblock_less_1.default.username },\n                react_1.default.createElement(Break_1.Break, { size: 12 }),\n                loading ? (react_1.default.createElement(Text_1.Text, { size: 20, color: Text_1.EColor.gray99 }, \"\\u0417\\u0430\\u0433\\u0440\\u0443\\u0437\\u043A\\u0430...\")) : (react_1.default.createElement(Text_1.Text, { size: 20, color: username ? Text_1.EColor.black : Text_1.EColor.gray99 }, username || 'Аноним'))))));\n}\nexports.UserBLock = UserBLock;\n\n\n//# sourceURL=webpack:///./src/shared/Header/SearchBlock/UserBlock/UserBlock.tsx?");
 
 /***/ }),
 
@@ -1013,6 +1013,18 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 
 /***/ }),
 
+/***/ "./src/store/commentStore.ts":
+/*!***********************************!*\
+  !*** ./src/store/commentStore.ts ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.store = void 0;\nvar storeon_1 = __webpack_require__(/*! storeon */ \"storeon\");\nvar comment = function (store) {\n    store.on('@init', function () { return ({ comment: 'Comment from Storeon' }); });\n    store.on('setComment', function (_a, data) {\n        var comment = _a.comment;\n        return ({ comment: data });\n    });\n};\nexports.store = storeon_1.createStoreon([comment]);\n\n\n//# sourceURL=webpack:///./src/store/commentStore.ts?");
+
+/***/ }),
+
 /***/ "./src/store/me/actions.ts":
 /*!*********************************!*\
   !*** ./src/store/me/actions.ts ***!
@@ -1153,17 +1165,6 @@ eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///externa
 
 /***/ }),
 
-/***/ "formik":
-/*!*************************!*\
-  !*** external "formik" ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"formik\");\n\n//# sourceURL=webpack:///external_%22formik%22?");
-
-/***/ }),
-
 /***/ "helmet":
 /*!*************************!*\
   !*** external "helmet" ***!
@@ -1271,6 +1272,28 @@ eval("module.exports = require(\"redux-devtools-extension\");\n\n//# sourceURL=w
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"redux-thunk\");\n\n//# sourceURL=webpack:///external_%22redux-thunk%22?");
+
+/***/ }),
+
+/***/ "storeon":
+/*!**************************!*\
+  !*** external "storeon" ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"storeon\");\n\n//# sourceURL=webpack:///external_%22storeon%22?");
+
+/***/ }),
+
+/***/ "storeon/react":
+/*!********************************!*\
+  !*** external "storeon/react" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"storeon/react\");\n\n//# sourceURL=webpack:///external_%22storeon/react%22?");
 
 /***/ })
 
